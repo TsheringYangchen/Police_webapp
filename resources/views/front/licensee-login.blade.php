@@ -5,19 +5,34 @@
     <div class="container h-100">
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
+                
                 <div class="form-area">
                     <div class="d-flex justify-content-center">
                         <img src="{{asset('images/HoI-logo.png')}}" alt="HoI-logo" style="width:90px;height:90px"></div><br>
                         <div class="d-flex justify-content-center">
-                             <h4>LICENSE STATUS FORM</h4>
+                             <h4>VIEW LICENSE STATUS</h4>
                         </div>
+                        @if ( session()->has('msg') )
+                            <div class="alert alert-success">{{ session()->get('msg') }}</div>
+                        @endif
                         <div class="d-flex justify-content-center form_container">
-                            <form>
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                            <form  method="post" action="front/licensee-login">
+                                @csrf
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     </div>
-                                        <input class="form-control input_user" name="" placeholder="License Number" type="text" value="">
+                                        <input class="form-control input_user" name="no" placeholder="License Number" type="text">
                                     </div>
                                  <div class="form-group">
                                         <div class="custom-control custom-checkbox">
@@ -25,7 +40,7 @@
                                      </div>
                                  </div>
                             <div class="d-flex justify-content-center mt-3 login_container">
-                                <button class="btn login_btn" name="button" type="button">VIEW</button>
+                                <button class="btn login_btn" name="button" type="submit">VIEW</button>
                             </div>
                             </form>
                         </div>
@@ -40,8 +55,6 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        background: #ddd !important;
-        color: #fff;
     }
     .form-area 
     {

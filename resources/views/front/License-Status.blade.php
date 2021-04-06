@@ -25,7 +25,7 @@
       </div>
       <div id="offence" class="container tab-pane fade"><br>
        
-        <p>WOW!-- Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div><br>
       <div id="rules" class="container tab-pane fade"><br>
                  
@@ -58,9 +58,11 @@
                 <td>500</td>
                 <td>Selling of alcohols on Tuesday</td>
               </tr>
+            </tbody>         
       </div>
   </div>
 </div>
+<br>
+@endsection 
 
-@endsection
 

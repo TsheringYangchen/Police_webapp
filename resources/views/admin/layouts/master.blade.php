@@ -22,8 +22,6 @@
     {{ Html::style('assets/css/themify-icons.css') }}
 
     {{ Html::style('assets/css/style.css') }}
-
-
 </head>
 <body>
 
@@ -48,7 +46,7 @@
                                 <i class="ti-settings"></i>
                                 <p>{{ auth()->guard('admin')->check() ? auth()->guard()->user()->name : 'Account' }}</p>
                                 <b class="caret"></b>
-                            </a>
+                            </a> 
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('/admin/logout') }}">Logout</a></li>
                             </ul>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('page')
-    Add License Holder
+    Edit License Holder
 @endsection
 
 @section('content')
@@ -12,12 +12,9 @@
 
         <div class="card col-md-8">
             <div class="card-body">
-                @if ( session()->has('msg') )
-                <div class="alert alert-success">{{ session()->get('msg') }}</div>
-               @endif
-                <h2 class="card-title">Add License Holder</h2>
+                <h2 class="card-title">Edit License Holder</h2>
                 <hr>
-                
+
                 @if ( $errors->any() )
 
                     <div class="alert alert-success">
@@ -29,20 +26,24 @@
                     </div>
 
                 @endif
-                <form action="/license/register" method="post">
 
-                    @csrf
+                <form action="/licenseupdate/{{ $license->id}}" method="POST">
+
+                    {{csrf_field()}} 
+                    {{ method_field('PUT')}}
+
                     <div class="form-group">
                         <label for="name">License Holder Name:</label>
-                        <input type="text" name="LHname" placeholder="Name" id="LHname" class="form-control">
+                        <input type="text" name="LHname" value="{{ $licenses->LHname}}" placeholder="Name" id="LHname" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="name">License Number:</label>
-                        <input type="text" name="license" placeholder="License Number" id="license" class="form-control">
+                        <input type="text" name="license" value="{{ $licenses->license}}" placeholder="License Number" id="license" class="form-control">
                     </div>
 
                     <div class="form-group mb-5">
-                        <button class="btn btn-outline-info col-md-2" style="margin-bottom: 20px"> Register</button>
+                        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px"> Update</button>
+                        <a href="/viewLicense" class="btn btn-danger" style="margin-bottom: 20px"> Cancel </a>
                     </div>
 
                 </form>

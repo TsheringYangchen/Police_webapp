@@ -65,12 +65,10 @@
 
 <!-- Page Content -->
 <div class="container">
-
-
     @yield('content')
     <!-- Page Features -->
     <!-- /.row -->
-</div>
+</div><br>
 
 @include('front.layouts.footer')
 

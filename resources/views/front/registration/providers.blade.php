@@ -26,7 +26,7 @@
                         <p>{{Session::get('success')}}</p>
                     </div>
                     @endif
-                <form method="post" action="{{route('admin.providers')}}">
+                <form method="post" action="{{url('/admin/providers')}}">
                     {{csrf_field()}}
                     <div class="form-group">
                     Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="name" type="text" style="border:2px solid #3399ff; border-radius:6px;"><br><br>

@@ -6,36 +6,37 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 mx-auto">
-      <form>
+      <form method="post" action="getbin" enctype="multipart/form-data">
+      @csrf
         <div class="form-group row">
           <div class="col-md-6">
             <label for="license">License No</label>
-            <input type="text" class="form-control" id="license" placeholder="">
+            <input type="text" class="form-control" id="license" name="lno" placeholder="">
           </div>
 
           <div class="col-sm-6">
             <label>Date</label>
-            <input type="date" class="form-control" id="inputPassword4" placeholder="DD/MM/YYYY"> 
+            <input type="date" class="form-control" id="inputPassword4" name="lda" placeholder="DD/MM/YYYY"> 
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="inputname">Name of Licensee</label>
-            <input type="text" class="form-control" id="inputname">
+            <input type="text" class="form-control" name="lna" id="inputname">
           </div>
           <div class="col-sm-6">
             <label for="inputcid">CID No</label>
-            <input type="text" class="form-control" id="inputcid" placeholder="">
+            <input type="text" class="form-control" name="cno" id="inputcid" placeholder="">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="inputCity">Establishment Name</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="">
+            <input type="text" class="form-control" name="ena" id="inputCity" placeholder="">
           </div>
           <div class="col-sm-6">
             <label for="inputAddressLine2">Place</label>
-            <input type="text" class="form-control" id="inputAddressLine2" placeholder="">
+            <input type="text" class="form-control" name="lp" id="inputAddressLine2" placeholder="">
           </div>
         </div>
         <div class="form-group row">
@@ -152,16 +153,12 @@
           </div>
         </div> 
         </div>
-        </form>
+    
         <div class="image">
-          <div class="form-group" x-data="{ fileName: '' }">
-            <div class="input-group shadow">
-              <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
-              <input type="file"class="d-none">
-              <input type="text" class="form-control form-control-lg" placeholder="Upload Image Evidence" x-model="fileName">
-              <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
-            </div>
-          </div>
+        <h3>Evidence</h3>
+        <div class="custom-file">
+          <input required type="file" class="form-control" name="images[]"  placeholder="images" multiple>
+        </div>
         </div>
     </div>
   </div>
@@ -171,12 +168,14 @@
       <div class="col-md-9 mx-auto">
         <form>
         <div class="container btn btn-center">
-          <button class="btn btn-success text-white w-25" type="button">Submit</button>
+          <button class="btn btn-success text-white w-25" type="submit">Submit</button>
         </div>
       </div>
     </div>
     <br><br>
   </div>
+  </form>
+
 
 	<style>
 	    

@@ -25,7 +25,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
                         @if (!auth()->check())
                             <a class="dropdown-item " href="{{  url('user/login') }}">Sign In</a>
-                            <a class="dropdown-item" href="{{  url('user/register') }}">Sign Up</a>
+                            
                         @else
                             <a class="dropdown-item" href="{{  url('user/profile') }}"><i class="fa fa-user"></i> Profile</a>
                             <hr>
@@ -33,9 +33,7 @@
                         @endif
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">Admin Login</a>
-                </li>
+                
             </ul>
         </div>
     </div>

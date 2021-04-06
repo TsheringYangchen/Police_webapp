@@ -28,7 +28,8 @@ class SessionsController extends Controller
 
         // Check if exists
         $data= request(['email','password']);
-        if ( ! auth()->attempt($data) ) {
+        if ( ! auth()->attempt($data) ) 
+        {
             return back()->withErrors([
                 'message' => 'Wrong credentials please try again'
             ]);

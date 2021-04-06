@@ -1,15 +1,14 @@
+
 @extends('front.layouts.master')
 @section('content')
     
-    <div class="row justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
 
-        <div class="col-md-12" id="register">
-
-            <div class="card col-md-8">
+            <div class="col-md-8">
+                <div class="card mt-3">
+                    <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
                 <div class="card-body">
-
-                    <h2 class="card-title">Login</h2>
-                    <hr>
 
                     @if ( $errors->any() )
 
@@ -43,23 +42,19 @@
                             <input type="password" name="password" placeholder="Password" id="password"
                                    class="form-control">
                         </div>
-                        <div class="col-6">
-                            <a href="">
-                               Forgot Password?
+                        <div class="form-group">
+                             <a href="#">   
+                                Forgot Your Password?
                             </a>
                         </div><br>
-
                         <div class="form-group">
-                            <button class="btn btn-success col-md-2"> Login</button>
+                            <button class="btn btn-success col-md-2">Login</button>
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
-
         </div>
 
     </div>
+</div>
 @endsection
