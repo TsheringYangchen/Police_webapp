@@ -22,7 +22,6 @@ class CreateBinsTable extends Migration
             $table->string('ena');
             $table->string('lp');
             $table->text('image');
-            
         });
     }
 

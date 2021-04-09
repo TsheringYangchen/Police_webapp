@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issuer extends Model
 {
-    protected $table = 'issuers';
-    protected $fillable = ['Issuername','cid','designation','email','password','confirm_password'];
+    
+    protected $fillable = ['Issuername','cid','designation','pno','email','password','confirm_password'];
 }

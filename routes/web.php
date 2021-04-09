@@ -12,11 +12,6 @@ Route::prefix('admin')->group(function() {
         // Products
         Route::resource('/products','ProductController');
 
-        // Orders
-        Route::resource('/orders','OrderController');
-        Route::get('/confirm/{id}','OrderController@confirm')->name('order.confirm');
-        Route::get('/pending/{id}','OrderController@pending')->name('order.pending');
-
         // Users
         Route::resource('/users','UsersController');
 
@@ -35,22 +30,24 @@ Route::prefix('admin')->group(function() {
  */
     Route::get('/', 'Front\HomeController@index');
     Route::get('admin/viewLicense', 'Front\RegistrationController@viewLicense');
+    Route::get('/search', 'Front\RegistrationController@search');
     Route::get('admin/viewIssuer', 'IssuerController@viewIssuer');
-    
+
     Route::get('admin/license-edit/{id}','Front\RegistrationController@editLicense');
     Route::put('updateLicense/{id}','Front\RegistrationController@updateLicense');
     Route::get('/delete/{id}','Front\RegistrationController@deleteLicense');
     Route::post('front/licensee-login','Front\RegistrationController@Holder');
    
-    // User Registration //License Holders
-    Route::get('/user/register','Front\RegistrationController@index');
-    Route::post('/user/register','Front\RegistrationController@store');
+    // User Registration //License Holders //Providers
+    //Route::get('/user/register','Front\RegistrationController@index');
+    //Route::post('/user/register','Front\RegistrationController@store');
+    
     Route::post('/license/register','Front\RegistrationController@license');
 
-    //Route for Infringement Providers
-    Route::get('/admin/issuer', 'IssuerController@index');
-    Route::post('/admin/issuer','IssuerController@issue');
-    
+    //Try
+    Route::get('/user/register','IssuerController@index');
+    Route::post('/user/register','IssuerController@store');
+    Route::post('/provider/register', 'IssuerController@provide');
 
     // User Login
     Route::get('/user/login','Front\SessionsController@index');
@@ -68,24 +65,7 @@ Route::prefix('admin')->group(function() {
         Route::get('/ein','RouteController@ein');
         Route::get('/infringement','RouteController@infringement');
         Route::get('/License-Status','RouteController@status')->name('status');
-        Route::post('getbin','BinController@store');
+        Route::post('/getbin','BinController@store');
 
-        // Cart
-        Route::get('/cart', 'Front\CartController@index');
-        Route::post('/cart','Front\CartController@store')->name('cart');
-        Route::patch('/cart/update/{product}','Front\CartController@update')->name('cart.update');
-        Route::delete('/cart/remove/{product}','Front\CartController@destroy')->name('cart.destroy');
-        Route::post('/cart/saveLater/{product}', 'Front\CartController@saveLater')->name('cart.saveLater');
+        
 
-
-        // Save for later
-        Route::delete('/saveLater/destroy/{product}','Front\SaveLaterController@destroy')->name('saveLater.destroy');
-        Route::post('/cart/moveToCart/{product}','Front\SaveLaterController@moveToCart')->name('moveToCart');
-
-        // Checkout
-        Route::get('/checkout','Front\CheckoutController@index');
-        Route::post('/checkout','Front\CheckoutController@store')->name('checkout');
-
-        Route::get('empty', function() {
-            Cart::instance('default')->destroy();
-        });

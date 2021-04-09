@@ -35,7 +35,7 @@ class AdminUserController extends Controller
         }
 
         // Session message
-        session()->flash('msg','You have been logged in');
+        //session()->flash('msg','You have been logged in');
 
         return redirect('/admin');
 

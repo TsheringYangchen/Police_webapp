@@ -20,26 +20,64 @@ class IssuerController extends Controller
         return view('admin.issuers.create');
 
     }
-
-
-    public function issue(Request $request){
+   
+    public function provide(Request $request){
     
         $request->validate([
             'cid' => 'required|max:11',
             'Issuername' => 'required',
             'designation' => 'required',
-            'Email' => 'required',
+            'pno' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required',
         ]);
         // Save the data
         $issuer = Issuer::create([
             'cid' => $request->get('cid'),
             'Issuername' => $request->get('Issuername'),
             'designation' => $request->get('designation'),
+            'pno' => $request->get('pno'),
             'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'confirm_password' => $request->get('confirm_password'),
         ]);
 
           // Redirect to
           return redirect('/admin/issuers/create')->with('msg', 'BIN/EIN Providers has been created');
+      }
+      public function store(Request $request)
+      {
+  
+          // Validate the user
+          $request->validate([
+              'cid' => 'required',
+              'Issuername' => 'required',
+              'designation' => 'required',
+              'pno' => 'required',
+              'email' => 'required|email',
+              'password' => 'required|confirmed',
+              'confirm_password' => 'required',
+          ]);
+  
+          // Save the data
+          $issuer = Issuer::create([
+              'cid' => $request ->cid,
+              'Issuername' => $request->Issuername,
+              'designation' => $request->designation,
+              'pno' => $request->pno,
+              'email' => $request->email,
+              'password' => bcrypt($request->password),
+              'confirm_password' => bcrypt($request->confirm_password),
+          ]);
+  
+          // Sign the Providers in
+          auth()->login($issuer);
+  
+          $request->session()->flash('msg', 'Your providers has been added');
+  
+          // Redirect to
+          return redirect('/admin/issuers/create');
       }
 
       public function viewIssuer()

@@ -18,10 +18,8 @@
   </div>
 </form>
 <br>
-    
 <div class="row">
-  <div class="col-md-8 offset-2">
-    
+    <div class="col-md-8 offset-2">
 <table class="table table-responsive table-bordered w-100">
     <thead class="table-dark text-center">
       <tr>
@@ -32,7 +30,6 @@
         <th>Delete</th>
       </tr>
     </thead>
-    @include('admin.layouts.message')
     <tbody>
         @foreach ($licenses as $license)
         <tr>
@@ -51,10 +48,6 @@
     </tbody>
   </table>
  
-
-  <!-- Pagination Links -->
-  {{ $licenses->links() }}
-
 </div>
 
 </div>

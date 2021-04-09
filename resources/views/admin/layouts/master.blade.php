@@ -37,16 +37,18 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">@yield('page')</a>
+                    <a class="navbar-brand" href="#">@yield('page')</a> <!--Dashboard Tittle-->
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-settings"></i>
                                 <p>{{ auth()->guard('admin')->check() ? auth()->guard()->user()->name : 'Account' }}</p>
                                 <b class="caret"></b>
-                            </a> 
+                            </a>
+
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('/admin/logout') }}">Logout</a></li>
                             </ul>

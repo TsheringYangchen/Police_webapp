@@ -3,7 +3,7 @@
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="" class="simple-text">
-                BEST_R SYSTEM DASHBOARD
+                ADMIN | DASHBOARD
             </a>
         </div>
          <ul class="nav">

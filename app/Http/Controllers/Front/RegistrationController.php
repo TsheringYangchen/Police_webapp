@@ -62,7 +62,7 @@ class RegistrationController extends Controller
         // Redirect to
         return redirect('/admin/products/create');
     }
-    public function viewLicense(){
+   public function viewLicense(){
        
         //Before Applying pagination
              //$license=License::all();
@@ -70,24 +70,44 @@ class RegistrationController extends Controller
         $license=License::paginate(3);     
         return view('admin.products.viewLicense',['licenses'=>$license]);
     }
-   
-    public function editLicense(Request $request, $id)
+
+    public function search()
     {
-        $licenses = License::findOrFail($id);
-        return view('admin.products.license-edit')->with('licenses',$licenses);
+        $q = Input::get('q');
+        if($q != "")
+        {
+            $licenses = License::where('LHname', 'LIKE', '%'.$q.'%')
+                            ->orWhere('license', 'LIKE', '%'.$q.'%')
+                            ->get();
+        if(count($licenses) > 0)                    
+            return view('admin.products.search',compact('licenses'));
+        }
+        return redirect('/admin/viewLicense')->with('msg','No results found');
+
+    }
+    
+    public function editLicense($id)    
+    {
+        $licenses = License::find($id);
+        return view('admin.products.license-edit', compact('licenses, id'));
     }
     public function updateLicense(Request $request, $id)
     {
+        // Validation
+        $this->validate($request,[
+            'LHname' =>'required',
+            'license' =>'required'
+        ]);
         $licenses = License::find($id);
-        $licenses->LHname=$request->input('LHname');
-        $licenses->update();
-        return redirect('/admin/viewLicense')->with('success','You have successfully updated the details of License Holder');
+        $licenses->LHname=$request->get('LHname');
+        $licenses->license=$request->get('license');
+        $licenses->save();
+        return redirect()->route('admin.viewLicense')->with('msg','You have successfully updated License Holder');
     }
 
     public function  deleteLicense($id){
         $licenses = License::findOrFail($id);  
         $licenses->delete();
-        session()->flash('msg','You have successfully deleted the License Holder');
         return redirect('/admin/viewLicense');
     }
 
@@ -96,9 +116,7 @@ class RegistrationController extends Controller
         $request -> validate([
             
             'no'=>'required'
-        ]);
-        
-       
+        ]);   
 
     if ($holder = License::where('license','=', Input::get('no'))->first())
     {
@@ -108,7 +126,7 @@ class RegistrationController extends Controller
     else
     {
          // Session message
-        return back()->with('msg','Wrong license Number');
+        return back()->with('msg','You have entered wrong License No');
     }
     }
     

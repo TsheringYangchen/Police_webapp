@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\bin;
+use App\Bin;
 
 class BinController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        // Validate the form
+
         $request->validate([
             'lno' => 'required',
             'lda' => 'required',
@@ -24,7 +27,7 @@ class BinController extends Controller
         $image = $request->image;
         $image->move('uploads', $image->getClientOriginalName());
         }
-
+        //Save the products
        Bin::create([
             'lno' => $request->lna,
             'lda' => $request->lda,
@@ -32,7 +35,7 @@ class BinController extends Controller
             'cno' => $request->cno,
             'ena' => $request->ena,
             'lp' => $request->lp,
-            'image' => $request->image->getClientOriginalName(),
+            'image' => $request->image->getClientOriginalName()
             
         ]);
 

@@ -1,5 +1,5 @@
 
-@extends('front.layouts.master')
+@extends('front.layouts.master2')
 <br>
 @section('content')
     <div class="container h-100">
@@ -12,9 +12,8 @@
                         <div class="d-flex justify-content-center">
                              <h4>VIEW LICENSE STATUS</h4>
                         </div>
-                        @if ( session()->has('msg') )
-                            <div class="alert alert-success">{{ session()->get('msg') }}</div>
-                        @endif
+                        @include('admin.layouts.message')
+                        
                         <div class="d-flex justify-content-center form_container">
                             @if ($errors->any())
                             <div class="alert alert-danger">

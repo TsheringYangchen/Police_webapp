@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.master')
 
 @section('page')
@@ -29,8 +30,9 @@
 
                 <form action="/licenseupdate/{{ $license->id}}" method="POST">
 
-                    {{csrf_field()}} 
-                    {{ method_field('PUT')}}
+                    {{ csrf_field() }} 
+                    {{-- method_field('PUT')--}}
+                    <input type="hidden" name="_method" value="PATCH">
 
                     <div class="form-group">
                         <label for="name">License Holder Name:</label>
@@ -43,7 +45,7 @@
 
                     <div class="form-group mb-5">
                         <button type="submit" class="btn btn-primary" style="margin-bottom: 20px"> Update</button>
-                        <a href="/viewLicense" class="btn btn-danger" style="margin-bottom: 20px"> Cancel </a>
+                        <a href="admin/viewLicense" class="btn btn-danger" style="margin-bottom: 20px"> Cancel </a>
                     </div>
 
                 </form>

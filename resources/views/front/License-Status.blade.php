@@ -1,5 +1,6 @@
 
-@extends('front.layouts.master')
+@extends('front.layouts.master2')
+
 @section('content')
 <div class="container">
     <h4 class="text-center mt-4" style="color: #182C61">View Your License Details Here</h4>

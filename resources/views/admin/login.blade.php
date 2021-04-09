@@ -55,9 +55,7 @@
                             </div>
                         @endif
 
-                        @if ( session()->has('msg') )
-                            <div class="alert alert-success">{{ session()->get('msg') }}</div>
-                        @endif
+                        @include('admin.layouts.message')
 
 
                         <form method="post" action="/admin/login">

@@ -12,9 +12,9 @@
 
         <div class="card col-md-8">
             <div class="card-body">
-                @if ( session()->has('msg') )
-                <div class="alert alert-success">{{ session()->get('msg') }}</div>
-               @endif
+
+                @include('admin.layouts.message')
+
                 <h2 class="card-title">Add License Holder</h2>
                 <hr>
                 

@@ -18,6 +18,7 @@ class CreateIssuersTable extends Migration
             $table->string('Issuername');
             $table->string('cid')->unique();
             $table->string('designation');
+            $table->string('pno');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('confirm_password');

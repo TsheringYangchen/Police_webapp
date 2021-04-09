@@ -9,63 +9,49 @@
 <main class="py-4">
 	<div class="container" style="font-family: Verdana, Geneva, Tahoma, sans-serif">
 		<div class="row justify-content-center">
-			<div class="col-md-8" id="add">
+			<div class="col-md-8">
 				<div class="card">
-					<div class="card-header font-weight-bold bg-success">Create BIN/EIN Providers</div>
+					<div class="card-header  bg-success">Create BIN/EIN Providers</div>
+					<br>
 					<div class="card-body">
-                        @if ( $errors->any() )
-
-							<div class="alert alert-success">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-
-               			 @endif
-							@if ( session()->has('msg') )
-								<div class="alert alert-success">{{ session()->get('msg') }}</div>
-							@endif
-
-						<form  action="admin/issuers" method="post">
+						<form method="POST" action="/provider/register">
 							@csrf
-
-							<input type="hidden" name="_token">
+							
+							<div class="form-group row">
+								<label for="Issuername" class="col-md-4 col-form-label text-md-right">Provider Name:</label>
+								<div class="col-md-6">
+									<input id="Issuername" type="text" class="form-control " name="Issuername"> </div>
+							</div>
 							<div class="form-group row">
 								<label for="cid" class="col-md-4 col-form-label text-md-right">CID Number:</label>
 								<div class="col-md-6">
 									<input id="cid" type="text" class="form-control " name="cid"> </div>
 							</div>
 							<div class="form-group row">
-								<label for="pname" class="col-md-4 col-form-label text-md-right">Name:</label>
+								<label for="desig" class="col-md-4 col-form-label text-md-right">Designation:</label>
 								<div class="col-md-6">
-									<input id="pname" type="text" class="form-control " name="pname"> </div>
+									<input id="desig" type="text" class="form-control " name="designation"> </div>
 							</div>
 							<div class="form-group row">
 								<label for="phone" class="col-md-4 col-form-label text-md-right">Phone Number :</label>
 								<div class="col-md-6">
-									<input id="phone" type="text" class="form-control " name="phone"> </div>
+									<input id="phone" type="text" class="form-control " name="pno"> </div>
 							</div>
 							<div class="form-group row">
-								<label for="desig" class="col-md-4 col-form-label text-md-right">Designation:</label>
+								<label for="email" class="col-md-4 col-form-label text-md-right">Email Address :</label>
 								<div class="col-md-6">
-									<input id="desig" type="text" class="form-control " name="desig"> </div>
+									<input id="email" type="email" class="form-control " name="email"> </div>
 							</div>
-							<div class="form-group row">
-								<label for="email" class="col-md-4 col-form-label text-md-right">Email Address:</label>
-								<div class="col-md-6">
-									<input id="email" type="text" class="form-control " name="email"> </div>
-							</div>
+							
 							<div class="form-group row">
 								<label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 								<div class="col-md-6">
 									<input id="password" type="password" class="form-control " name="password"> </div>
 							</div>
 							<div class="form-group row">
-								<label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+								<label for="confirm_password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 								<div class="col-md-6">
-									<input id="password-confirm" type="password" class="form-control" name="password_confirmation"> </div>
+									<input id="confirm_password" type="password" class="form-control" name="confirm_password"> </div>
 							</div>
 							<div class="form-group row mb-0">
 								<div class="col-md-12 offset-md-4">
@@ -80,7 +66,6 @@
 		</div>
 	</div>
 </main> 
-
 
 
 @endsection

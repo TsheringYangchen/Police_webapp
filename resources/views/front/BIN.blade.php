@@ -166,7 +166,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9 mx-auto">
-        <form>
         <div class="container btn btn-center">
           <button class="btn btn-success text-white w-25" type="submit">Submit</button>
         </div>
